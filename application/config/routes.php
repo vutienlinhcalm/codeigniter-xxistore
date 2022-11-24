@@ -1,54 +1,43 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-/*
-| -------------------------------------------------------------------------
-| URI ROUTING
-| -------------------------------------------------------------------------
-| This file lets you re-map URI requests to specific controller functions.
-|
-| Typically there is a one-to-one relationship between a URL string
-| and its corresponding controller class/method. The segments in a
-| URL normally follow this pattern:
-|
-|	example.com/class/method/id/
-|
-| In some instances, however, you may want to remap this relationship
-| so that a different class/function is called than the one
-| corresponding to the URL.
-|
-| Please see the user guide for complete details:
-|
-|	https://codeigniter.com/userguide3/general/routing.html
-|
-| -------------------------------------------------------------------------
-| RESERVED ROUTES
-| -------------------------------------------------------------------------
-|
-| There are three reserved routes:
-|
-|	$route['default_controller'] = 'welcome';
-|
-| This route indicates which controller class should be loaded if the
-| URI contains no data. In the above example, the "welcome" class
-| would be loaded.
-|
-|	$route['404_override'] = 'errors/page_missing';
-|
-| This route will tell the Router which controller/method to use if those
-| provided in the URL cannot be matched to a valid route.
-|
-|	$route['translate_uri_dashes'] = FALSE;
-|
-| This is not exactly a route, but allows you to automatically route
-| controller and method names that contain dashes. '-' isn't a valid
-| class or method name character, so it requires translation.
-| When you set this option to TRUE, it will replace ALL dashes in the
-| controller and method URI segments.
-|
-| Examples:	my-controller/index	-> my_controller/index
-|		my-controller/my-method	-> my_controller/my_method
-*/
-$route['default_controller'] = 'welcome';
+
+$route['default_controller'] = 'IndexController';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+// User 
+$route['brand/(:any)']['GET'] = 'IndexController/brand/$1';
+$route['product-detail/(:any)']['GET'] = 'IndexController/product/$1';
+$route['cart']['GET'] = 'IndexController/cart';
+$route['login']['GET'] = 'IndexController/login';
+
+// Admin 
+//Login 
+$route['Admin/Login']['GET'] = 'Admin/LoginController/index';
+$route['Admin/login-admin']['POST'] = 'Admin/LoginController/login';
+//Dashboard 
+$route['Admin/Dashboard']['GET'] = 'Admin/DashboardController/index';
+$route['logout']['GET'] = 'Admin/DashboardController/logout';
+//Brand 
+$route['Admin/brand/list']['GET'] = 'Admin/BrandController/index';
+$route['Admin/brand/create']['GET'] = 'Admin/BrandController/create';
+$route['Admin/brand/edit/(:any)']['GET'] = 'Admin/BrandController/edit/$1';
+$route['Admin/brand/delete/(:any)']['GET'] = 'Admin/BrandController/delete/$1';
+$route['Admin/brand/update/(:any)']['POST'] = 'Admin/BrandController/update/$1';
+$route['Admin/brand/store']['POST'] = 'Admin/BrandController/store';
+
+//Product 
+$route['Admin/product/list']['GET'] = 'Admin/ProductController/index';
+$route['Admin/product/create']['GET'] = 'Admin/ProductController/create';
+$route['Admin/product/edit/(:any)']['GET'] = 'Admin/ProductController/edit/$1';
+$route['Admin/product/delete/(:any)']['GET'] = 'Admin/ProductController/delete/$1';
+$route['Admin/product/update/(:any)']['POST'] = 'Admin/ProductController/update/$1';
+$route['Admin/product/store']['POST'] = 'Admin/ProductController/store';
+//Customer
+$route['Admin/customer/list']['GET'] = 'Admin/CustomerController/index';
+$route['Admin/customer/view/(:any)']['GET'] = 'Admin/CustomerController/view/$1';
+//$route['Admin/product/create']['GET'] = 'Admin/ProductController/create';
+//$route['Admin/product/delete/(:any)']['GET'] = 'Admin/ProductController/delete/$1';
+//$route['Admin/product/update/(:any)']['POST'] = 'Admin/ProductController/update/$1';
+//$route['Admin/product/store']['POST'] = 'Admin/ProductController/store';
+
