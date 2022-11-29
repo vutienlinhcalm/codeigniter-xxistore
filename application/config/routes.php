@@ -2,14 +2,34 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
-$route['default_controller'] = 'IndexController';
+$route['default_controller'] = 'IndexController/index';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 // User 
 $route['brand/(:any)']['GET'] = 'IndexController/brand/$1';
+
 $route['product-detail/(:any)']['GET'] = 'IndexController/product/$1';
+
 $route['cart']['GET'] = 'IndexController/cart';
+$route['add-to-cart']['POST'] = 'IndexController/add_to_cart';
+$route['update-cart-item']['POST'] = 'IndexController/update_cart_item';
+$route['delete-item/(:any)']['GET'] = 'IndexController/delete_item/$1';
+$route['delete-all-cart']['GET'] = 'IndexController/delete_all_cart';
+
+$route['checkout']['GET'] = 'IndexController/checkout';
+$route['confirm-checkout']['POST'] = 'IndexController/confirm_checkout';
+$route['thanks']['GET'] = 'IndexController/thanks';
+
+
+
 $route['login']['GET'] = 'IndexController/login';
+$route['login-customer']['POST'] = 'IndexController/loginCustomer';
+
+$route['log-out']['GET'] = 'IndexController/logout';
+
+$route['register']['GET'] = 'IndexController/register';
+$route['registercustomer']['POST'] = 'IndexController/register_Customer';
+
 
 // Admin 
 //Login 

@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Home | E-Shopper</title>
+    <title>Home | E-Shopper</title>	
     <link href="<?php echo base_url('frontend/css/bootstrap.min.css') ?>" rel="stylesheet">
     <link href="<?php echo base_url('frontend/css/font-awesome.min.css') ?>" rel="stylesheet">
     <link href="<?php echo base_url('frontend/css/prettyPhoto.css') ?>" rel="stylesheet">
@@ -67,11 +67,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
-								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
-								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
+								<?php 
+									if($this->session->userdata('LoggedInCustomer')){
+								?>
+								<li><a href="#"><i class="fa fa-user"></i></a><?php echo $this->session->userdata('LoggedInCustomer')['cusname'] ?></li>
+								<li><a href="<?php echo base_url('cart') ?>"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+								<li><a href="<?php echo base_url('log-out') ?>"><i class="fa fa-crosshairs"></i> Log out</a></li>
+								<?php 
+									} else {
+								?>
+								<li><a href="<?php echo base_url('login') ?>"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+								<li><a href="<?php echo base_url('login')?>"><i class="fa fa-lock"></i> Login</a></li>
+								<li><a href="<?php echo base_url('register') ?>"><i class="fa fa-crosshairs"></i> Register</a></li>
+								<?php 
+									}
+								?>
 							</ul>
 						</div>
 					</div>

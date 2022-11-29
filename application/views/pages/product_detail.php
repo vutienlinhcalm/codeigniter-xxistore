@@ -68,6 +68,7 @@
 							</div>
 
 						</div>
+					<form action="<?php echo base_url('add-to-cart') ?>" method="POST">
 						<div class="col-sm-7">
 							<div class="product-information"><!--/product-information-->
 								<img src="images/product-details/new.jpg" class="newarrival" alt="" />
@@ -86,22 +87,38 @@
                                     ?>
                                 </p>
                                 <p><b>Capacity: </b><?php echo $protail->capacity  ?> ml</p>
-
+								<input type="hidden" value="<?php echo $protail->productid?>" name="productid">
 								<span>
-									<span><?php echo $protail->price ?> VNĐ</span>
-									<button type="button" class="btn btn-fefault cart">
-										<i class="fa fa-shopping-cart"></i>
+									<label>Quantity:</label>
+									<input type="number" value="1" name="quantity" />
+									<span><?php echo number_format($protail->price,0,',','.') ?> VNĐ</span>
+									<?php 
+										if($this->session->userdata('LoggedInCustomer')){
+									?>
+									<button type="submit" class="btn btn-fefault cart">
+										<i class="fa fa-shopping-cart"></i> 
 										Add to cart
 									</button>
+									<?php 
+									} else {
+									?>
+									<button type="submit" class="btn btn-fefault cart">
+										<a href="<?php echo base_url('login') ?>"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+	
+									</button>
+									<?php 
+									}
+									?>
 								</span>
-								<p><b>Tone Perfume: </b><?php echo $protail->toneperfume  ?> </p>
-                                <p><b>Top Incense: </b><?php echo $protail->topincense  ?> ml</p>
-                                <p><b>Middle Notes: </b><?php echo $protail->middlenote  ?> ml</p>
-                                <p><b>Last Notes: </b><?php echo $protail->lastnote  ?> ml</p>
-                                <p><b>Last Notes: </b> <br><?php echo $protail->description  ?> ml</p>
+								<p><b>Tone Perfume: </b><?php echo $protail->toneperfume  ?></p>
+                                <p><b>Top Incense: </b><?php echo $protail->topincense  ?></p>
+                                <p><b>Middle Notes: </b><?php echo $protail->middlenote  ?></p>
+                                <p><b>Last Notes: </b><?php echo $protail->lastnote  ?></p>
+                                <p><b>Last Notes: </b> <br><?php echo $protail->description  ?></p>
 								
 							</div><!--/product-information-->
 						</div>
+					</form>
 					</div><!--/product-details-->
 					<?php 
                         }

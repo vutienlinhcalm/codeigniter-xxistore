@@ -4,6 +4,24 @@
             parent::__construct();
         }
 
+        public function checkloginCustomer($email, $password){
+            $query = $this->db->where('email', $email)->where('password', $password)->get('customer');
+            return $query->result();
+        }
+        public function insertCustomer($data_cus){
+           return $this->db->insert('customer', $data_cus);  
+        }
+
+        public function insertShipping($data_shipping){
+          $this->db->insert('shipping', $data_shipping);
+          return $ship_id = $this->db->insert_id();
+        }
+        public function insertOders($data_order){
+            return $this->db->insert('orders', $data_order);
+        }
+        public function insertOderDetails($data_order_detail){
+            return $this->db->insert('order_details', $data_order_detail);
+        }
         public function getBrandHome(){
             $query = $this->db->get_where('brand',['status'=>1]);
             return $query->result();
@@ -39,7 +57,6 @@
             $query = $this->db->get();
             $result = $query->row();
             return $brandname =  $result->brandname;
-
-        }
+        }     
     }
 ?>
