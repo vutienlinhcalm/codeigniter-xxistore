@@ -17,22 +17,22 @@ class BrandController extends CI_Controller {
 	public function index()
 	{
       //  $this->checklogin();
-        $this->load->view('templates/Header');
+        $this->load->view('admincommon/header');
         $this->load->view('admincommon/navbar');
         // Lấy dữ liệu từ model
         $this->load->model('Admin/BrandModel');
         $data['brand']  = $this->BrandModel->selectBrand();
 
 		$this->load->view('Admin/brand/list',$data);
-        $this->load->view('templates/Footer');
+        $this->load->view('admincommon/footer');
 	}  
     public function create()
 	{
       //  $this->checklogin();
-        $this->load->view('templates/Header');
+        $this->load->view('admincommon/header');
         $this->load->view('admincommon/navbar');
 		$this->load->view('Admin/brand/create');
-        $this->load->view('templates/Footer');
+        $this->load->view('admincommon/footer');
 	}  
     // select databrand
     public function store(){
@@ -54,10 +54,10 @@ class BrandController extends CI_Controller {
             {       // gán lỗi vào mảng $error
                     $error = array('error' => $this->upload->display_errors());
 
-                    $this->load->view('templates/Header');
+                    $this->load->view('admincommon/header');
                     $this->load->view('admincommon/navbar');
                     $this->load->view('Admin/brand/create',$error);
-                    $this->load->view('templates/Footer');
+                    $this->load->view('admincommon/footer');
             }
             else
             {
@@ -84,14 +84,14 @@ class BrandController extends CI_Controller {
         }
     }
     public function edit($brandid){
-        $this->load->view('templates/Header');
+        $this->load->view('admincommon/header');
         $this->load->view('admincommon/navbar');
 
         $this->load->model('Admin/BrandModel');
         $data['brand']  = $this->BrandModel->selectBrandByid($brandid);
 
 		$this->load->view('Admin/brand/edit',$data);
-        $this->load->view('templates/Footer');
+        $this->load->view('admincommon/footer');
     }
 
     public function update($brandid){
@@ -115,10 +115,10 @@ class BrandController extends CI_Controller {
                 {       // gán lỗi vào mảng $error
                         $error = array('error' => $this->upload->display_errors());
 
-                        $this->load->view('templates/Header');
+                        $this->load->view('admincommon/header');
                         $this->load->view('admincommon/navbar');
                         $this->load->view('Admin/brand/create',$error);
-                        $this->load->view('templates/Footer');
+                        $this->load->view('admincommon/footer');
                 }
                 else
                 {

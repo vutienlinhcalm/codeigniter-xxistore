@@ -9,9 +9,9 @@ class LoginController extends CI_Controller {
 	
 	public function index()
 	{
-        $this->load->view('templates/Header');
+        $this->load->view('admincommon/header');
 		$this->load->view('Admin/login');
-        $this->load->view('templates/Footer');
+        $this->load->view('admincommon/footer');
 	}
     public function login(){
         $this->form_validation->set_rules('email', 'Email', 'trim|required',['required' => 'You must provide a email %s.']);

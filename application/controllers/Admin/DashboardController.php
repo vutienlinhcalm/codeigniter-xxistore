@@ -19,10 +19,10 @@ class DashboardController extends CI_Controller {
 	public function index()
 	{
       //  $this->checklogin();
-        $this->load->view('templates/Header');
+        $this->load->view('admincommon/header');
         $this->load->view('admincommon/navbar');
 		$this->load->view('Admin/Dashboard');
-        $this->load->view('templates/Footer');
+        $this->load->view('admincommon/footer');
 	}
     public function logout(){
         //$this->checklogin();

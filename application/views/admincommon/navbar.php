@@ -39,8 +39,7 @@
             Order
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="<?php echo base_url('Admin/brand/create') ?>">Add Order</a></li>
-            <li><a class="dropdown-item" href="<?php echo base_url('Admin/brand/list') ?>">List Order</a></li>
+            <li><a class="dropdown-item" href="<?php echo base_url('Admin/order/list') ?>">List Order</a></li>
           </ul>
         </li>
 

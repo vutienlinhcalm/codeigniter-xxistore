@@ -18,26 +18,26 @@ class ProductController extends CI_Controller {
 	public function index()
 	{
       //  $this->checklogin();
-        $this->load->view('templates/Header');
+        $this->load->view('admincommon/header');
         $this->load->view('admincommon/navbar');
         // Lấy dữ liệu từ model
         $this->load->model('Admin/ProductModel');
         $data['product']  = $this->ProductModel->selectAllproduct();
 
 		$this->load->view('Admin/product/list',$data);
-        $this->load->view('templates/Footer');
+        $this->load->view('admincommon/footer');
 	}  
     public function create()
 	{
       //  $this->checklogin();
-        $this->load->view('templates/Header');
+        $this->load->view('admincommon/header');
         $this->load->view('admincommon/navbar');
         // lấy dữ liệu của brand
         $this->load->model('Admin/BrandModel');
         $data['brand']  = $this->BrandModel->selectBrand();
 
 		$this->load->view('Admin/product/create',$data);
-        $this->load->view('templates/Footer');
+        $this->load->view('admincommon/footer');
 	}  
     // select dataproduct
     public function store(){
@@ -67,10 +67,10 @@ class ProductController extends CI_Controller {
             {       // gán lỗi vào mảng $error
                     $error = array('error' => $this->upload->display_errors());
 
-                    $this->load->view('templates/Header');
+                    $this->load->view('admincommon/header');
                     $this->load->view('admincommon/navbar');
                     $this->load->view('Admin/product/create',$error);
-                    $this->load->view('templates/Footer');
+                    $this->load->view('admincommon/footer');
             }
             else
             {
@@ -106,7 +106,7 @@ class ProductController extends CI_Controller {
         }
     }
     public function edit($productid){
-        $this->load->view('templates/Header');
+        $this->load->view('admincommon/header');
         $this->load->view('admincommon/navbar');
         // lấy dữ liệu của brand
         $this->load->model('Admin/BrandModel');
@@ -116,7 +116,7 @@ class ProductController extends CI_Controller {
         $data['product']  = $this->ProductModel->selectProductByid($productid);
 
 		$this->load->view('Admin/product/edit',$data);
-        $this->load->view('templates/Footer');
+        $this->load->view('admincommon/footer');
     }
 
     public function update($productid){
@@ -147,10 +147,10 @@ class ProductController extends CI_Controller {
                 {       // gán lỗi vào mảng $error
                         $error = array('error' => $this->upload->display_errors());
 
-                        $this->load->view('templates/Header');
+                        $this->load->view('admincommon/header');
                         $this->load->view('admincommon/navbar');
                         $this->load->view('Admin/product/create',$error);
-                        $this->load->view('templates/Footer');
+                        $this->load->view('admincommon/footer');
                 }
                 else
                 {

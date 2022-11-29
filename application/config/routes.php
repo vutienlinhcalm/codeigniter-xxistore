@@ -56,8 +56,9 @@ $route['Admin/product/store']['POST'] = 'Admin/ProductController/store';
 //Customer
 $route['Admin/customer/list']['GET'] = 'Admin/CustomerController/index';
 $route['Admin/customer/view/(:any)']['GET'] = 'Admin/CustomerController/view/$1';
-//$route['Admin/product/create']['GET'] = 'Admin/ProductController/create';
-//$route['Admin/product/delete/(:any)']['GET'] = 'Admin/ProductController/delete/$1';
-//$route['Admin/product/update/(:any)']['POST'] = 'Admin/ProductController/update/$1';
-//$route['Admin/product/store']['POST'] = 'Admin/ProductController/store';
+
+//Order 
+$route['Admin/order/list']['GET'] = 'Admin/OrderController/index';
+$route['Admin/order/view/(:any)']['GET'] = 'Admin/OrderController/view/$1';
+
 
