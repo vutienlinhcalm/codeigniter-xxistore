@@ -1,3 +1,11 @@
+Account Admin
+vutienlinh@gmail.com
+123456
+Account User
+sieunhanxanh@gmail.com
+123456
+
+
 ###################
 What is CodeIgniter
 ###################
