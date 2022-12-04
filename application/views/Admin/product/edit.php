@@ -22,68 +22,68 @@
   <form action="<?php echo base_url('/Admin/product/update/'.$product->productid) ?>" method="POST" enctype="multipart/form-data">  
  
     <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Name</label>
+        <label for="exampleInputEmail1" class="form-label">name</label>
         <input type="text" value="<?php echo $product->productname ?>" name="productname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         <?php echo "<span class ='text text-danger'>". form_error('productname')."</span>"; ?>
     </div>
 
     <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Description</label>
+        <label for="exampleInputPassword1" class="form-label">description</label>
         <input type="text" value="<?php echo $product->description?>" name="description" class="form-control" id="exampleInputPassword1">
         <?php echo "<span class ='text text-danger'>". form_error('description')."</span>"; ?>
     </div>
 
     <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Price</label>
+        <label for="exampleInputEmail1" class="form-label">price</label>
         <input type="text" value="<?php echo $product->price?>" name="price" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         <?php echo "<span class ='text text-danger'>". form_error('price')."</span>"; ?>
     </div>
 
     <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Quantity</label>
+        <label for="exampleInputEmail1" class="form-label">quantity</label>
         <input type="text" value="<?php echo $product->quantity?>" name="quantity" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         <?php echo "<span class ='text text-danger'>". form_error('quantity')."</span>"; ?>
     </div>
 
     <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Tone Perfume</label>
+        <label for="exampleInputEmail1" class="form-label">tone perfume</label>
         <input type="text" value="<?php echo $product->toneperfume?>" name="toneperfume" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         <?php echo "<span class ='text text-danger'>". form_error('toneperfume')."</span>"; ?>
     </div>
 
     <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Top Incense</label>
+        <label for="exampleInputEmail1" class="form-label">top incense</label>
         <input type="text" value="<?php echo $product->topincense?>" name="topincense" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         <?php echo "<span class ='text text-danger'>". form_error('topincense')."</span>"; ?>
     </div>
 
     <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Middle Notes</label>
+        <label for="exampleInputEmail1" class="form-label">Hương giữa</label>
         <input type="text" value="<?php echo $product->middlenote?>" name="middlenote" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         <?php echo "<span class ='text text-danger'>". form_error('middlenote')."</span>"; ?>
     </div>
 
     <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Last Notes</label>
+        <label for="exampleInputEmail1" class="form-label">last notes</label>
         <input type="text" value="<?php echo $product->lastnote?>" name="lastnote" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         <?php echo "<span class ='text text-danger'>". form_error('lastnote')."</span>"; ?>
     </div>
 
     <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Capacity</label>
+        <label for="exampleInputEmail1" class="form-label">capacity</label>
         <input type="text" value="<?php echo $product->capacity?>" name="capacity" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         <?php echo "<span class ='text text-danger'>". form_error('capacity')."</span>"; ?>
     </div>
 
     <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Image</label>
+        <label for="exampleInputPassword1" class="form-label">image</label>
         <input type="file" name="image" class="form-control" id="exampleInputPassword1">
         <img src="<?php  echo base_url("uploads/imageproduct/".$product->image)  ?>" width="150" height="150"> 
         <small> <?php if(isset($error)){echo $error;} ?> </small>
     </div>
 
     <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Gender</label>
+        <label for="exampleInputPassword1" class="form-label">gender</label>
             <select class="form-select" name="gender" aria-label="Default select example"> 
             <?php 
                 if( $product->gender == 0){
@@ -123,7 +123,7 @@
             </select>
     </div>
 
-    <button type="submit" class="btn btn-primary">Update Product</button>
+    <button type="submit" class="btn btn-primary">Update</button>
     </form>
   </div>
   

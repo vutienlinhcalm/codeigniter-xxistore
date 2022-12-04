@@ -22,10 +22,9 @@
         <tr>
         <th scope="col">STT</th>
         <th scope="col">Name</th>
-        <th scope="col">Description</th>
-        <th scope="col">Image</th>
+        <th class="d-flex justify-content-center" scope="col">Image</th>
         <th scope="col">Status</th>
-        <th scope="col">Handle</th>
+        
         </tr>
     </thead>
     <!-- Biến vào là biến brand trong BranController index -->
@@ -37,8 +36,7 @@
         <tr>
         <th scope="row"> <?php echo $key + 1 ?> </th>
         <td>  <?php echo $bra->brandname ?> </td>
-        <td>  <?php echo $bra->description ?> </td>
-        <td> 
+        <td class="d-flex justify-content-center"> 
            <img src="<?php  echo base_url("uploads/imagebrand/".$bra->image)  ?>" width="150" height="150"> 
            <!-- <img src="../../../../uploads/imagebrand/<?php echo $bra->image ?>" width="150" height="150">  -->
         </td>
@@ -51,7 +49,7 @@
                 } ?>
           </td>
         <td>
-            <a href="<?php echo base_url('Admin/brand/edit/'.$bra->brandid) ?>"><button type="button" class="btn btn-outline-secondary">Update</button></a>
+            <a href="<?php echo base_url('Admin/brand/edit/'.$bra->brandid) ?>"><button style="width:70px" type="button" class="btn btn-outline-secondary">View</button></a>
             <a onclick="return confirm('Are you sure delete') " href="<?php echo base_url('Admin/brand/delete/'.$bra->brandid) ?>"><button type="button" class="btn btn-outline-danger">Delete</button></a> 
         </td>
         </tr>

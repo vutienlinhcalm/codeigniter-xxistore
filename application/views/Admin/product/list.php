@@ -22,17 +22,13 @@
         <tr>
         <th scope="col">STT</th>
         <th scope="col">Name</th>
-        <th scope="col">Description</th>
-        <th scope="col">Price</th>
+        <th class="d-flex justify-content-center"  scope="col">Price</th>
         <th scope="col">Quantity</th>
-        <th scope="col">Tone Perfume</th>
-        <th scope="col">Top Incense</th>
-        <th scope="col">Middle Notes</th>
-        <th scope="col">Last Notes</th>
+        <th class="d-flex justify-content-center"  scope="col">Tone Perfume</th>
         <th scope="col">Capacity</th>
-        <th scope="col">Brand</th>
+        <th class="d-flex justify-content-center" scope="col">Brand</th>
         <th scope="col">Gender</th>
-        <th scope="col">Image</th>
+        <th class="d-flex justify-content-center" scope="col">Image</th>
 
 
         </tr>
@@ -46,13 +42,9 @@
         <tr>
         <th scope="row"> <?php echo $key + 1 ?> </th>
         <td>  <?php echo $pro->productname ?> </td>
-        <td>  <?php echo $pro->description ?> </td>
         <td>  <?php echo $pro->price ?> </td>
         <td>  <?php echo $pro->quantity ?> </td>
         <td>  <?php echo $pro->toneperfume ?> </td>
-        <td>  <?php echo $pro->topincense ?> </td>
-        <td>  <?php echo $pro->middlenote ?> </td>
-        <td>  <?php echo $pro->lastnote ?> </td>
         <td>  <?php echo $pro->capacity ?> </td>
         <td>  <?php echo $pro->brandname ?> </td>
         <td>  
@@ -71,7 +63,8 @@
         </td>
         
         <td>
-            <a href="<?php echo base_url('Admin/product/edit/'.$pro->productid) ?>"><button type="button" class="btn btn-outline-secondary">Update</button></a>
+            <a href="<?php echo base_url('Admin/product/edit/'.$pro->productid) ?>"><button style="width:70px" type="button" class="btn btn-outline-secondary">View</button></a>
+            <br/>
             <a onclick="return confirm('Are you sure delete') " href="<?php echo base_url('Admin/product/delete/'.$pro->productid) ?>"><button type="button" class="btn btn-outline-danger">Delete</button></a> 
         </td>
         </tr>

@@ -19,8 +19,12 @@
 						?>
 						</div><!--/brand-product-->
 			
-						
-						
+						<!--price-range-->
+
+						<!-- price-range -->
+						<div class="shipping text-center"><!--shipping-->
+							<img src="images/home/shipping.jpg" alt="" />
+						</div><!--/shipping-->
 					</div>
 				</div>
 				
@@ -28,24 +32,23 @@
 
 					<div class="features_items"><!--features_items-->
                        
-						<h2 class="title text-center"><?php echo $brandname ?></h2>
+						<h2 class="title text-center"><?php echo $productname ?></h2>
                         
 						<?php 
-							foreach($brand_product as $key => $valuepro){
+							foreach($product as $key => $valuepro){
 						?>
 						<div class="col-sm-4">
-							<a href="<?php echo base_url('product-detail/'.$valuepro->productid) ?>">
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
 										<img src="<?php echo base_url("uploads/imageproduct/".$valuepro->image)?>" alt="<?php echo $valuepro->productname ?>" />
 										<h2><?php echo $valuepro->price ?> VND</h2>
 										<p><?php echo $valuepro->productname ?></p>
+										<a href="<?php echo base_url('product-detail/'.$valuepro->productid) ?>" class="btn btn-default add-to-cart"><i class="fa fa-eye"></i>Details</a>
+										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
-								</div>
+								
 							</div>
-							</a>
-							
 						</div>
 						<?php 
 							}

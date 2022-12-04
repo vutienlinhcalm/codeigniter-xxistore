@@ -6,9 +6,14 @@ $route['default_controller'] = 'IndexController/index';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 // User 
+$route['pagination/(:num)'] = 'IndexController/index/$1';
+$route['pagination'] = 'IndexController/index/  ';
+
+
 $route['brand/(:any)']['GET'] = 'IndexController/brand/$1';
 
 $route['product-detail/(:any)']['GET'] = 'IndexController/product/$1';
+$route['searchproduct']['GET'] = 'IndexController/searchProduct';
 
 $route['cart']['GET'] = 'IndexController/cart';
 $route['add-to-cart']['POST'] = 'IndexController/add_to_cart';
@@ -18,7 +23,10 @@ $route['delete-all-cart']['GET'] = 'IndexController/delete_all_cart';
 
 $route['checkout']['GET'] = 'IndexController/checkout';
 $route['confirm-checkout']['POST'] = 'IndexController/confirm_checkout';
+
 $route['thanks']['GET'] = 'IndexController/thanks';
+$route['send-mail']['GET'] = 'IndexController/sendEmail';
+
 
 
 

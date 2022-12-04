@@ -4,59 +4,53 @@
     <!-- Lấy user name đăng nhập từ trang LoginController -->
    
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" style="font-size: 24px;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <ul class="nav">
+        <li class="nav-item navbar_width ">
+          <a class="nav-link navbar_text "  href="<?php echo base_url('Admin/Dashboard') ?>">
           <?php echo $this->session->userdata('LoggedIn')['adminname']; ?>
           </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="<?php echo base_url('logout') ?>">Logout</a></li>
-          </ul>
         </li>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" style="font-size: 24px;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <li class="nav-item position-relative navbar_width navbar_items">
+          <a class="nav-link navbar_text "  href="#">
             Brand
           </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="<?php echo base_url('Admin/brand/create') ?>">Add Brand</a></li>
-            <li><a class="dropdown-item" href="<?php echo base_url('Admin/brand/list') ?>">List Brand</a></li>
+          <ul class="position-absolute background_navbar navbar_width navbar_item">
+            <li class="background_navbar"><a class="nav-link navbar_text_child " href="<?php echo base_url('Admin/brand/create') ?>">Add Brand</a></li>
+            <hr/>
+            <li class="background_navbar"><a class="nav-link navbar_text_child " href="<?php echo base_url('Admin/brand/list') ?>">List Brand</a></li>
           </ul>
         </li>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" style="font-size: 24px;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <li class="nav-item position-relative navbar_width navbar_items ">
+          <a class="nav-link navbar_text"  href="#" >
             Product
           </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="<?php echo base_url('Admin/product/create') ?>">Add Product</a></li>
-            <li><a class="dropdown-item" href="<?php echo base_url('Admin/product/list') ?>">List Product</a></li>
+          <ul class="position-absolute navbar_width background_navbar navbar_item">
+            <li class=""><a class="nav-link navbar_text_child " href="<?php echo base_url('Admin/product/create') ?>">Add Product</a></li>
+            <hr/>
+            <li class=""><a class="nav-link navbar_text_child " href="<?php echo base_url('Admin/product/list') ?>">List Product</a></li>
           </ul>
         </li>
         
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" style="font-size: 24px;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <li class="nav-item navbar_width ">
+          <a class="nav-link navbar_text  "  href="<?php echo base_url('Admin/order/list') ?>">
             Order
           </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="<?php echo base_url('Admin/order/list') ?>">List Order</a></li>
-          </ul>
         </li>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" style="font-size: 24px;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <li class="nav-item navbar_width">
+          <a class="nav-link navbar_text " href="<?php echo base_url('Admin/customer/list') ?>">
             Customer
           </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="<?php echo base_url('Admin/customer/list') ?>">List Customer</a></li>
-          </ul>
         </li>
-    
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      
+    </div>
+    <div>
+        <div>
+          <a class="nav-link navbar_text logout" href="<?php echo base_url('logout') ?>">Logout</a>
+        </div>
     </div>
   </div>
 </nav>

@@ -26,11 +26,19 @@
             $query = $this->db->get_where('brand',['status'=>1]);
             return $query->result();
         }
-        public function getAllProduct(){
-            $query = $this->db->get_where('product',['quantity >'=>1]);
+        public function countAllProduct(){
+            return $this->db->count_all('product');
+        }
+      
+        // public function getAllProduct(){
+        //     $query = $this->db->get_where('product',['quantity >'=>1]);
+        //     return $query->result();
+        // }
+        public function getIndexPagination($limit,$start){
+            $this->db->limit($limit,$start);
+            $query = $this->db->get_where('product',['quantity >' => 1]);
             return $query->result();
         }
-
         public function getBrandProduct($brandid){
             $query =  $this->db->select('brand.brandname as brandname, product.*')
            ->from('product')
@@ -57,6 +65,15 @@
             $query = $this->db->get();
             $result = $query->row();
             return $brandname =  $result->brandname;
-        }     
+        } 
+        
+        public function getProductByKeyword($keyword){
+            $query = $this->db->select('brand.brandname as brandname, product.*')
+           ->from('product')
+           ->join('brand','product.brand_id=brand.brandid')
+           ->like('product.productname',$keyword)
+           ->get();
+           return $query->result();
+        }
     }
 ?>

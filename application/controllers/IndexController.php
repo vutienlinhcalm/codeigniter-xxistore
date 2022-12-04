@@ -5,13 +5,42 @@ class IndexController extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('IndexModel');
-
+		$this->load->library('pagination');
 		$this->data['brand'] = $this->IndexModel->getBrandHome();
 	}
 	
 	public function index()
 	{
-		$this->data['product'] = $this->IndexModel->getAllProduct();
+		//custom config link
+		$config = array();
+        $config["base_url"] = base_url(). '/pagination'; 
+		$config['total_rows'] = $this->IndexModel->countAllProduct(); //đếm tất cả sản phẩm //8 //hàm ceil làm tròn phân trang 
+		$config["per_page"] = 9; //từng trang 9 sản phẩn
+        $config["uri_segment"] = 2; //lấy số trang hiện tại
+		$config['use_page_numbers'] = TRUE; //trang có số
+		$config['full_tag_open'] = '<ul class="pagination">';
+		$config['full_tag_close'] = '</ul>';
+		$config['first_link'] = 'First';
+		$config['first_tag_open'] = '<li>';
+		$config['first_tag_close'] = '</li>';
+		$config['last_link'] = 'Last';
+		$config['last_tag_open'] = '<li>';
+		$config['last_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li class="active"><a>';
+		$config['cur_tag_close'] = '</a></li>';
+		$config['num_tag_open'] = '<li>';
+		$config['num_tag_close'] = '</li>';
+		$config['next_tag_open'] = '<li>';
+		$config['next_tag_close'] = '</li>';
+		$config['prev_tag_open'] = '<li>';
+		$config['prev_tag_close'] = '</li>';
+		//end custom config link
+		$this->pagination->initialize($config); //tự động tạo trang
+		$this->page = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0; //current page active 
+		$this->data["links"] = $this->pagination->create_links(); //tự động tạo links phân trang dựa vào trang hiện tại
+		$this->data['allproduct_pagination'] = $this->IndexModel->getIndexPagination($config["per_page"], $this->page);
+		//pagination
+		//$this->data['product'] = $this->IndexModel->getAllProduct();
 		$this->load->view('pages/common/header',$this->data);
 		$this->load->view('pages/common/slider');
 		$this->load->view('pages/home',$this->data);
@@ -95,6 +124,11 @@ class IndexController extends CI_Controller {
 			   }
                 $this->session->set_flashdata('success', 'Xác nhận thanh toán thành công');
 				$this->cart->destroy();
+				// Gửi email
+				$to_email = $email;
+				$subject = 'Bạn đã đặt đơn hàng thành công';
+				$message = 'Đơn hàng của bạn ở XII Store';
+				$this->sendEmail($to_email,$subject,$message);
                 redirect(base_url('/thanks'));
                }else{
                 $this->session->set_flashdata('error', 'Xác nhận thanh toán thất bại');
@@ -109,6 +143,30 @@ class IndexController extends CI_Controller {
 		$this->load->view('pages/thanks');
 		$this->load->view('pages/common/footer');
 	}
+	public function sendEmail($to_mail,$subject,$message){
+		$config = array();
+		$config['protocol'] = 'smtp';
+		$config['smtp_host'] = 'ssl://smtp.gmail.com';
+		$config['smtp_user'] = 'apolopass2001@gmail.com';
+		$config['smtp_pass'] = 'ceazioisoaldebyd';//ceazioisoaldebyd
+		$config['smtp_port']= 465;
+		$config['charset'] = 'utf-8';
+
+		$this->email->initialize($config);
+		$this->email->set_newline("\r\n");
+
+		$this->email->from('apolopass2001@gmail.com', 'Your Name');
+		$this->email->to($to_mail);
+		// $this->email->cc('another@another-example.com');
+		// $this->email->bcc('them@their-example.com');
+
+		$this->email->subject($subject);
+		$this->email->message($message);
+
+		$this->email->send();
+
+	}
+
 	public function add_to_cart(){
 		$productid = $this->input->post('productid');
 		$quantity = $this->input->post('quantity');
@@ -154,7 +212,6 @@ class IndexController extends CI_Controller {
 	public function login()
 	{
 		$this->load->view('pages/common/header');
-		//$this->load->view('pages/common/slider');
 		$this->load->view('pages/login');
 		$this->load->view('pages/common/footer');
 	}
@@ -249,6 +306,18 @@ class IndexController extends CI_Controller {
 			$this->register();
 
         }
+	}
+
+	public function searchProduct(){
+		if(isset($_GET['keyword']) && $_GET['keyword'] != ''){
+			$keyword = $_GET['keyword'];
+		}
+		$this->data['product'] = $this->IndexModel->getProductByKeyword($keyword);
+		$this->data['productname'] = $keyword;
+		$this->load->view('pages/common/header',$this->data);
+		$this->load->view('pages/common/slider');
+		$this->load->view('pages/searchproduct',$this->data);
+		$this->load->view('pages/common/footer');
 	}
 	
 

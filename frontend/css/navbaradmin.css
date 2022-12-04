@@ -1,0 +1,28 @@
+ul{
+    list-style: none;
+}
+.navbar_width {
+    width: 200px;
+}
+.navbar_text{
+    color: #000;
+    font-size: 24px;
+}
+.navbar_text_child{
+    color: #000;
+    font-size: 16px;
+}
+.background_navbar{
+    background-color: #fafafa;
+}
+
+.navbar_item{
+    display: none;
+    z-index: 1;
+}
+.navbar_items:hover ul{
+    display: block;
+}   
+.logout:hover{
+    color: rgb(102, 91, 91);
+}
